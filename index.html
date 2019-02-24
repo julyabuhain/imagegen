@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>rawr rawr</title>
+
+    <script>
+      const lookingforlist = ["cofounder", "investor", "partnership", "work", "client", "love"];
+
+      function generateUrl() {
+        var selected = "";
+        lookingforlist.forEach(function (item) {
+          if (document.getElementById(item).checked) {
+            selected += item + ","
+          }
+        })
+        var imgTag = '<img id="meme" src="http://localhost:3000?url=http://localhost:8000/share.html?lookingfor='+selected+'" alt="">'
+        document.getElementById("img-container").innerHTML = imgTag;
+      }
+    </script>
+
+  </head>
+  <body>
+
+    <h1>Why are you going to Echelon?</h1>
+
+    <label for="investor"><input type="checkbox" id="investor">Investors</label> <br>
+    <label for="cofounder"><input type="checkbox" id="cofounder">Co-founders</label> <br>
+    <label for="partnership"><input type="checkbox" id="partnership">Partnerships</label> <br>
+    <label for="work"><input type="checkbox" id="work">Work</label> <br>
+    <label for="client"><input type="checkbox" id="client">Clients</label> <br>
+    <label for="love"><input type="checkbox" id="love">Love</label> <br>
+
+    <button onclick="generateUrl();">Generate Image</button>
+
+    <hr>
+
+    <div id="img-container"></div>
+
+
+    <!-- <img id="meme" src="http://localhost:3000?url=http://localhost:8000/share.html?lookingfor=investor,cofounder,work" alt=""> -->
+
+  </body>
+</html>

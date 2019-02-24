@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+    <style>
+
+      @import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+      body {
+        font-family: 'Work Sans';
+        color: #fff;}
+
+      h1 {
+        font-size: 42px;
+      }
+
+
+      #gen-img {
+        background: #2f166f center center url("imggen-bg.png");
+        background-size: cover;
+        padding-left: 30px;
+        width: 600px;
+        height: 420px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      li {
+        display: none;
+        font-size: 26px;
+      }
+
+      li.show {
+        display: list-item;
+      }
+      </style>
+
+
+  <body>
+
+   <div id="gen-img">
+     <h1>I'm attending Echelon!</h1>
+     <h2>I'm looking for:</h2>
+       <ul><li id="cofounder">Cofounders</li>
+           <li id="investor">Investors</li>
+           <li id="partnership">Partnerships</li>
+           <li id="work">Work</li>
+           <li id="client">Clients</li>
+           <li id="love">Love</li>
+         </ul>
+    </div>
+
+
+    <script>
+    // PhantomJS is old. :(
+    // const queryparams = new URLSearchParams(window.location.search);
+    function queryparams(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    const lookingforlist = ["cofounder", "investor", "partnership", "work", "client", "love"];
+
+    lookingforlist.forEach(function (item){
+      if (queryparams("lookingfor").search(item) > -1) {
+        document.getElementById(item).classList.add("show");
+      }
+    });
+
+
+    </script>
+  </body>
+</html>
